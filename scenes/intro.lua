@@ -1,13 +1,12 @@
 local Intro = {}
 
 local introDuration = 4
-local w
-local h
+local w, h
 local stars = {}
 local evanBrosText
 local t = 0
 
-function Intro:load()
+function Intro.load()
   w = love.graphics.getWidth()
   h = love.graphics.getHeight()
 
@@ -22,11 +21,11 @@ function Intro:load()
   end
 end
 
-function Intro:update(dt)
-  t = t + (1 / introDuration)  * dt
-
+function Intro.update(dt)
   if t > 1 then
-    if Intro.onEnd then Intro.onEnd() else love.event.quit() end
+    if Intro.onEnd then Intro.onEnd() else return end
+  else
+    t = t + (1 / introDuration)  * dt
   end
 
   for i, star in pairs(stars) do
@@ -35,7 +34,7 @@ function Intro:update(dt)
   end
 end
 
-function Intro:draw()
+function Intro.draw()
   local alphaText = math.pow(math.sin(math.pi * t), 10)
   local alphaStars = math.pow(math.sin(math.pi * t), 2)
 

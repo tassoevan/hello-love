@@ -1,6 +1,6 @@
 local Tiago = {}
 
-function Tiago:load()
+function Tiago.load()
   love.physics.setMeter(64) --the height of a meter our worlds will be 64px
   world = love.physics.newWorld(0, 9.81*64, true) --create a world for the bodies to exist in with horizontal gravity of 0 and vertical gravity of 9.81
   world:setCallbacks(beginContact, endContact, preSolve, postSolve)
@@ -37,7 +37,7 @@ function Tiago:load()
   contacts = world:getContactList()
 end
 
-function Tiago:update(dt)
+function Tiago.update(dt)
   world:update(dt) --this puts the world into motion
 
   --here we are going to create some keyboard events
