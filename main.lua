@@ -1,14 +1,16 @@
 local Intro = require('scenes/intro')
+local Stage = require('scenes/stage')
 local Tiago = require('scenes/tiago')
 
 local currentScene = nil
 local nextScene = nil
 
 function love.load()
-  nextScene = Intro
   Intro.onEnd = function ()
     nextScene = Tiago
   end
+
+  nextScene = Stage
 end
 
 function love.update(dt)
